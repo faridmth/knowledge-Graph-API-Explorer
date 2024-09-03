@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body{
+  background-color: #f5f8fa;
+}
+a{
+  text-decoration: underline;
+}
+.resultdiv{
+  width: 70%;
+  background-color: rgb(223, 223, 223);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1px;
+}
+.type{
+  background-color:#3399cceb ;
+}
+.resultdiv p:nth-child(1){
+  width: 230px;
+}
+.resultdiv p:nth-child(2){
+  flex: 1;
+}
+.resultdiv p{
+  padding: 15px 12px;
+}
