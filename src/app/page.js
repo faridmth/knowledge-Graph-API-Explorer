@@ -7,7 +7,6 @@ import EntitesStats from "./_components/EntitesStats";
 import SideBar from "./_components/Sidebar";
 export default function Home() {
   const [page,setPage]=useState(0)
-  console.log(page)
   return (
     <div>
       <SideBar setPage={setPage} page={page}/>

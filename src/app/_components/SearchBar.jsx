@@ -1,6 +1,6 @@
 'use client'
 import { useState } from "react"
-const searchBar = ({setEntity,placeholder}) => {
+const SearchBar = ({setEntity,placeholder}) => {
     const [inputText,setInputText]=useState('')
     const handleChange = (e)=>{
         setInputText(e.target.value)
@@ -16,4 +16,4 @@ const searchBar = ({setEntity,placeholder}) => {
   )
 }
 
-export default searchBar
+export default SearchBar

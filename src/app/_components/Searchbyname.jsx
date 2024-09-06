@@ -1,7 +1,6 @@
 'use client'
 import SearchBar from './SearchBar'
 import DispResults from './DispResults'
-import Sidebar from './Sidebar';
 //
 import { useState , useEffect } from "react";
 
