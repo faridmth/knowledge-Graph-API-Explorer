@@ -1,9 +1,9 @@
 import React from 'react'
 
 const ResultComV1 = ({data}) => {
-    console.log(data)
+
   return (
-    <div className='flex flex-col items-center mt-8'>
+    <div className='flex flex-col items-center mt-8 '>
         {
         data.result["@type"]&&(
             <div className='resultdiv type'>
