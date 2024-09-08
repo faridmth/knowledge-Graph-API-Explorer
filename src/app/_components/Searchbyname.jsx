@@ -31,7 +31,7 @@ const Searchbyname = () => {
 
       <SearchBar setEntity={setEntity} placeholder="Nom de l'entité..."/>
       {
-        isLoading?<p className="text-xl min-w-full flex justify-center p-5 mt-16">Loading...</p>:(data&&<DispResults data={data}/>)
+        isLoading?<p className="text-xl min-w-full flex justify-center p-5 mt-16">Loading...</p>:(data&&<DispResults data={data} showBtns={false}/>)
       }
     </div>
 

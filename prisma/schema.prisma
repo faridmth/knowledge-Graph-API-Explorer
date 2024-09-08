@@ -1,0 +1,21 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Entity{
+  EntityId String @unique
+  EntityName String
+  history History[]
+}
+model History{
+  Id Int @id @default(autoincrement())
+  ResultScore Int
+  CreatedAt DateTime @default(now())
+  EntityId String
+  Entity Entity @relation(fields: [EntityId],references: [EntityId],onDelete: Cascade)
+}

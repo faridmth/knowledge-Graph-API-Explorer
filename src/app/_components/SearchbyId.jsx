@@ -4,7 +4,7 @@ import DispResults from './DispResults'
 //
 import { useState , useEffect } from "react";
 
-const SearchbyId = () => {
+const SearchbyId = ({setEntitiesRefresher,allEntities}) => {
     const [entity,setEntity]=useState('')
     const [isLoading,setIsLoading]=useState(false)
     const [data,setData]=useState(null)
@@ -39,7 +39,7 @@ const SearchbyId = () => {
     <div className='ml-[250px]'>
       <SearchBar setEntity={setEntity} placeholder="ID de l'entité..."/>
       {
-        isLoading?<p className="text-xl min-w-full flex justify-center p-5 mt-16">Loading...</p>:(data&&<DispResults data={data}/>)
+        isLoading?<p className="text-xl min-w-full flex justify-center p-5 mt-16">Loading...</p>:(data&&<DispResults data={data} showBtns={true} allEntities={allEntities} setEntitiesRefresher={setEntitiesRefresher}/>)
       }
     </div>
 
