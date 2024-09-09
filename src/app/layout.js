@@ -1,5 +1,9 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
+import {EntitiesProvider} from "./_components/EntitiesProvider"
+import SideBar from "./_components/Sidebar";
+import { Toaster } from 'react-hot-toast';
+
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -11,7 +15,14 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <EntitiesProvider>
+        <body className={inter.className}>
+          <Toaster />
+          <SideBar/>
+          {children}
+        </body>
+      </EntitiesProvider>
+      
     </html>
   );
 }

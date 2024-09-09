@@ -1,13 +1,16 @@
 'use client'
-import SearchBar from './SearchBar'
-import DispResults from './DispResults'
+import SearchBar from '../_components/SearchBar'
+import DispResults from '../_components/DispResults'
+import {EntitiesData} from "../_components/EntitiesProvider"
 //
-import { useState , useEffect } from "react";
+import { useState , useEffect,useContext } from "react";
 
-const SearchbyId = ({setEntitiesRefresher,allEntities}) => {
+const SearchbyId = () => {
     const [entity,setEntity]=useState('')
     const [isLoading,setIsLoading]=useState(false)
     const [data,setData]=useState(null)
+    const { entitiesData, refreshEntities } = useContext(EntitiesData)
+
     useEffect(()=>{
       if(entity.trim()==="") return
       setIsLoading(true)
@@ -39,7 +42,7 @@ const SearchbyId = ({setEntitiesRefresher,allEntities}) => {
     <div className='ml-[250px]'>
       <SearchBar setEntity={setEntity} placeholder="ID de l'entité..."/>
       {
-        isLoading?<p className="text-xl min-w-full flex justify-center p-5 mt-16">Loading...</p>:(data&&<DispResults data={data} showBtns={true} allEntities={allEntities} setEntitiesRefresher={setEntitiesRefresher}/>)
+        isLoading?<p className="text-xl min-w-full flex justify-center p-5 mt-16">Loading...</p>:(data&&<DispResults data={data} showBtns={true} allEntities={entitiesData} setEntitiesRefresher={refreshEntities}/>)
       }
     </div>
 

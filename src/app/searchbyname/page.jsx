@@ -1,6 +1,6 @@
 'use client'
-import SearchBar from './SearchBar'
-import DispResults from './DispResults'
+import SearchBar from '../_components/SearchBar'
+import DispResults from '../_components/DispResults'
 //
 import { useState , useEffect } from "react";
 

@@ -3,9 +3,9 @@ import React from 'react';
 import ResultComV1 from './ResultComV1';
 import PostBtn from './PostBtn'
 import DeleteBtn from './DeleteBtn'
+import toast from 'react-hot-toast';
 const DispResults = ({ data , showBtns ,setEntitiesRefresher,allEntities}) => {
   const [isFollowed,setIsFollowed]=useState(false)
-  console.log(allEntities)
 
   useEffect(()=>{
     if(showBtns && data.itemListElement){
@@ -31,11 +31,13 @@ const DispResults = ({ data , showBtns ,setEntitiesRefresher,allEntities}) => {
 
     if(showBtns && isFollowed){
       console.log("history saved")
+      toast.success('Result Score sauvegardé !')
       saveHistory()
     }
   },[data,showBtns,isFollowed])
   return (
     <>
+    
       {data.itemListElement ? (
         <div className='mb-10'>
           <div className='w-full flex justify-center mt-8 '>
@@ -46,8 +48,6 @@ const DispResults = ({ data , showBtns ,setEntitiesRefresher,allEntities}) => {
                     isFollowed?<DeleteBtn EntityId={data.itemListElement[0].result["@id"].replace('kg:','')} EntityName={data.itemListElement[0].result.name} setEntitiesRefresher={setEntitiesRefresher} setIsFollowed={setIsFollowed}/>
                     :<PostBtn EntityId={data.itemListElement[0].result["@id"].replace('kg:','')} EntityName={data.itemListElement[0].result.name} setEntitiesRefresher={setEntitiesRefresher} setIsFollowed={setIsFollowed}/>
                   )
-                  
-
               }
             </div>
           </div>

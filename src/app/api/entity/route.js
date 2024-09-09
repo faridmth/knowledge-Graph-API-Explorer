@@ -49,7 +49,7 @@ export const GET = async()=>{
         })
         return NextResponse.json(entities)
     }catch(err){
-        console.error(error);
+        console.error(err);
         return NextResponse.json({ error: "An error occurred" }, { status: 500 });
 
     }finally{

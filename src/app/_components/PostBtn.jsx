@@ -1,5 +1,6 @@
 import React from 'react'
 import { FaPlus } from 'react-icons/fa';
+import toast from 'react-hot-toast';
 
 const PostBtn = ({EntityId,EntityName,setEntitiesRefresher,setIsFollowed}) => {
     const handlePost = async () => {
@@ -19,6 +20,9 @@ const PostBtn = ({EntityId,EntityName,setEntitiesRefresher,setIsFollowed}) => {
             }
             setIsFollowed(true)
             setEntitiesRefresher(pre=>pre+1)
+            toast.success('Entité ajouté la liste des suivi')
+
+            
         } catch (error) {
             console.error(error);
         }

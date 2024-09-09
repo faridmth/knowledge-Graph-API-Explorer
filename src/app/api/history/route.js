@@ -30,7 +30,8 @@ export const POST = async (req)=>{
 export const GET = async (req)=>{
     const {searchParams } = new URL(req.url) 
     const entityId =  searchParams .get('entityid')
-    console.log(entityId)
+    
+    
 
     if(!entityId){
         return NextResponse.json({message:"enity Id not Found !"},{status:404})
