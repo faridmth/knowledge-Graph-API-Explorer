@@ -1,11 +1,12 @@
 'use client'
-import { useEffect, useState } from "react"
+import { useEffect, useState , useContext } from "react"
 import Table from "../../_components/Table"
-
+import {EntitiesData} from "../../_components/EntitiesProvider"
 const Page = ({ params }) => {
   const [historique, setHistorique] = useState(null)
   const [isLoading, setIsLoading] = useState(false)
-
+  const {entitiesData} = useContext(EntitiesData)
+  const EnityName = entitiesData.filter(e=>e.EntityId===decodeURIComponent(params.id))
   useEffect(() => {
     const main = async () => {
       setIsLoading(true)
@@ -31,6 +32,7 @@ const Page = ({ params }) => {
       ) : (
         <div>
           <div className="w-full pl-16 pt-14">
+          {EnityName[0]&&<h2 className="text-xl "><span className="font-medium">Nom de l&apos;entité :</span> {EnityName[0].EntityName}</h2>}
             <h2 className="text-xl "><span className="font-medium">Id de l&apos;entité :</span> {decodeURIComponent(params.id)}</h2>
           </div>
           {historique && historique.length > 0 ? (
