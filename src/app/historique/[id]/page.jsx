@@ -10,7 +10,7 @@ const Page = ({ params }) => {
     const main = async () => {
       setIsLoading(true)
       try {
-        let data = await fetch(`api/history?entityid=${params.id}`)
+        let data = await fetch(`../api/history?entityid=${params.id}`)
         data = await data.json()
         setHistorique(data)
       } catch (err) {
