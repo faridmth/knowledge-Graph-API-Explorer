@@ -43,7 +43,7 @@ export const GET = async (req)=>{
                 EntityId : entityId
             },
             orderBy:{
-                CreatedAt : 'asc'
+                CreatedAt : 'desc'
             }
         })
         return NextResponse.json(history ,{status:200})
