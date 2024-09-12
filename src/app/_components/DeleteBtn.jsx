@@ -1,7 +1,8 @@
 import { FaTrash } from 'react-icons/fa';
 import toast from 'react-hot-toast';
-const DeleteBtn = ({EntityId,setEntitiesRefresher,setIsFollowed}) => {
-    console.log(EntityId)
+import { useRouter } from 'next/navigation';
+const DeleteBtn = ({EntityId,setEntitiesRefresher}) => {
+    const router = useRouter()
     const handleDelete = async () => {
         try {
             const deleteEntity = await fetch('/api/entity', {
@@ -17,11 +18,11 @@ const DeleteBtn = ({EntityId,setEntitiesRefresher,setIsFollowed}) => {
             if (!deleteEntity.ok) {
                 throw new Error(`Error: ${deleteEntity.status} ${deleteEntity.statusText}`);
             }
-            setIsFollowed(false)
             setEntitiesRefresher(pre=>pre+1)
             const response = await deleteEntity.json();
             toast.error("Entité supprimer la liste des suivi.")
             console.log('Deleted successfully:', response.message);
+            router.push('/searchbyid')
     
             // Update your UI or state here if needed, e.g., removing the item from a list
         } catch (error) {

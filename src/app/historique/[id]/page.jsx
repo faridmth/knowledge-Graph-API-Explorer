@@ -2,10 +2,11 @@
 import { useEffect, useState , useContext } from "react"
 import Table from "../../_components/Table"
 import {EntitiesData} from "../../_components/EntitiesProvider"
+import DeleteBtn from "../../_components/DeleteBtn"
 const Page = ({ params }) => {
   const [historique, setHistorique] = useState(null)
   const [isLoading, setIsLoading] = useState(false)
-  const {entitiesData} = useContext(EntitiesData)
+  const {entitiesData,refreshEntities} = useContext(EntitiesData)
   const EnityName = entitiesData.filter(e=>e.EntityId===decodeURIComponent(params.id))
   useEffect(() => {
     const main = async () => {
@@ -31,9 +32,14 @@ const Page = ({ params }) => {
         </div>
       ) : (
         <div>
-          <div className="w-full pl-16 pt-14">
-          {EnityName[0]&&<h2 className="text-xl "><span className="font-medium">Nom de l&apos;entité :</span> {EnityName[0].EntityName}</h2>}
-            <h2 className="text-xl "><span className="font-medium">Id de l&apos;entité :</span> {decodeURIComponent(params.id)}</h2>
+          <div className="w-full pl-16 pt-14 flex justify-between">
+            <div>
+              {EnityName[0]&&<h2 className="text-xl "><span className="font-medium">Nom de l&apos;entité :</span> {EnityName[0].EntityName}</h2>}
+              <h2 className="text-xl "><span className="font-medium">Id de l&apos;entité :</span> {decodeURIComponent(params.id)}</h2>
+            </div>
+            <div>
+              <DeleteBtn EntityId={decodeURIComponent(params.id)} setEntitiesRefresher={refreshEntities}/>
+            </div>
           </div>
           {historique && historique.length > 0 ? (
             <Table data={historique} />
